@@ -1,0 +1,17 @@
+{
+  "name": "sydney.here.li",
+  "version": "1.0.0",
+  "description": "A collection of living tips in Sydney for Vietnamese students",
+  "main": "index.js",
+  "author": "Bach <bach@koaladigital.com.au>",
+  "license": "MIT",
+  "private": true,
+  "dependencies": {
+    "next": "^9.4.2",
+    "react": "^16.13.1",
+    "react-dom": "^16.13.1"
+  },
+  "devDependencies": {
+    "frontmatter-markdown-loader": "^3.4.3"
+  }
+}
