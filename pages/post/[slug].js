@@ -1,28 +1,27 @@
 import React, { Component } from "react";
+import dynamic from "next/dynamic";
 
 class Post extends Component {
   static async getInitialProps({ query }) {
     const { slug } = query;
-    const blogpost = await import(`../../content/posts/${slug}.md`).catch(
+    const post = await import(`../../content/posts/${slug}.md`).catch(
       (error) => null
     );
-
-    return { blogpost };
+    return { post };
   }
   render() {
-    if (!this.props.blogpost) return <div>not found</div>;
+    if (!this.props.post) return <div>not found</div>;
 
     const {
-      html,
-      attributes: { thumbnail, title },
-    } = this.props.blogpost.default;
+      attributes: { title, thumbnail, content },
+    } = this.props.post.default;
 
     return (
       <>
         <article>
           <h1>{title}</h1>
           <img src={thumbnail} />
-          <div dangerouslySetInnerHTML={{ __html: html }} />
+          {content}
         </article>
         <style jsx>{`
           article {
