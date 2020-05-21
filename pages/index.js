@@ -1,7 +1,6 @@
 import Head from "next/head";
 import { Component } from "react";
-import { attributes, react as HomeContent } from "../content/home.md";
-
+import ReactMarkdown from "react-markdown/with-html";
 import Link from "next/link";
 
 const importPosts = async () => {
@@ -22,12 +21,15 @@ const importPosts = async () => {
 export default class Home extends Component {
   static async getInitialProps() {
     const postsList = await importPosts();
-
-    return { postsList };
+    const homepage = await import("../content/home.md");
+    return { postsList, attributes: homepage.attributes, body: homepage.body };
   }
 
   render() {
-    let { title, cats } = attributes;
+    const {
+      attributes: { title, cats },
+      body,
+    } = this.props;
     const { postsList } = this.props;
     return (
       <>
@@ -37,7 +39,11 @@ export default class Home extends Component {
         </Head>
         <article>
           <h1>{title}</h1>
-          <HomeContent />
+          <ReactMarkdown
+            escapeHtml={false}
+            source={body}
+            //renderers={{ code: CodeBlock, image: MarkdownImage }}
+          />
           <ul>
             {cats.map((cat, k) => (
               <li key={k}>
@@ -47,9 +53,9 @@ export default class Home extends Component {
             ))}
           </ul>
           <div className="blog-list">
-            {postsList.map((post) => {
+            {postsList.map((post, k) => {
               return (
-                <Link href={`/post/${post.slug}`}>
+                <Link key={k} href={`/post/${post.slug}`}>
                   <a>
                     <img src={post.attributes.thumbnail} />
                     <h2>{post.attributes.title}</h2>
