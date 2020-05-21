@@ -1,5 +1,6 @@
 backend:
   name: git-gateway
+  repo: bachly/sydney.here.li
   branch: master
 media_folder: public/img
 public_folder: img
