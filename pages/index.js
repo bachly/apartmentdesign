@@ -49,7 +49,7 @@ export default class Home extends Component {
           <div className="blog-list">
             {postsList.map((post) => {
               return (
-                <Link href={`blog/post/${post.slug}`}>
+                <Link href={`/post/${post.slug}`}>
                   <a>
                     <img src={post.attributes.thumbnail} />
                     <h2>{post.attributes.title}</h2>
