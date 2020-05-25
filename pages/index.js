@@ -50,7 +50,7 @@ function Home({ props }) {
         <script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
         <title>{title}</title>
       </Head>
-      <div className="w-100 sans-serif bg-white">
+      <div id={`home`} className="w-100 sans-serif bg-white">
         <Header isMenuOpened={isMenuOpened} toggleMenu={toggleMenu} />
 
         <div
@@ -59,7 +59,7 @@ function Home({ props }) {
             isMenuOpened ? "menuOpened" : null
           )}
         >
-          <section className="mw7 center">
+          <div className="mt6 mb6 center ph3 ph0-l">
             <h1>{title}</h1>
             <ReactMarkdown
               escapeHtml={false}
@@ -86,7 +86,7 @@ function Home({ props }) {
                 );
               })}
             </div>
-          </section>
+          </div>
         </div>
       </div>
 
