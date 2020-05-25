@@ -139,6 +139,20 @@ export default function Header({ isMenuOpened, toggleMenu }) {
           transform: translateY(-300px);
         }
 
+        .menu {
+          height: 66px;
+        }
+
+        @media screen and (min-width: 60em) {
+          .menuContainer {
+            background-color: white;
+            color: black;
+          }
+          .menu {
+            height: 88px;
+          }
+        }
+
         .menuContainer.menuOpened {
           transform: translateY(0);
         }
@@ -152,10 +166,6 @@ export default function Header({ isMenuOpened, toggleMenu }) {
           height: 300px;
           font-family: AG, -apple-system, BlinkMacSystemFont, helvetica neue,
             helvetica, ubuntu, roboto, noto, segoe ui, arial, sans-serif;
-        }
-
-        .menu {
-          height: 64px;
         }
 
         .menuButton #bottom,
