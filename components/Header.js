@@ -4,6 +4,31 @@ export default function Header({ isMenuOpened, toggleMenu }) {
     toggleMenu();
   };
 
+  const navLinks = [
+    {
+      linkText: "Posts",
+      linkUrl: "/posts",
+    },
+    {
+      linkText: "Mixes",
+      linkUrl: "/mixes",
+    },
+    {
+      linkText: "About",
+      linkUrl: "/about",
+    },
+    {
+      linkText: "Instagram",
+      linkUrl: "https://www.instagram.com/theloversmag/",
+      external: true,
+    },
+    {
+      linkText: "Twitter",
+      linkUrl: "https://twitter.com/theloversmag",
+      external: true,
+    },
+  ];
+
   return (
     <>
       <header
@@ -11,32 +36,16 @@ export default function Header({ isMenuOpened, toggleMenu }) {
       >
         <div className="f3 db offscreen-nav w-100 tc center bg-gray white flex jusitfy-center items-center flex-row">
           <nav className="center">
-            <a
-              className="db b pv3"
-              href="https://interfacelovers.com/interviews"
-            >
-              Interviews
-            </a>
-            <a className="db b pv3" href="https://interfacelovers.com/mixes">
-              Mixes
-            </a>
-            <a className="db b pv3" href="https://interfacelovers.com/about">
-              About
-            </a>
-            <a
-              className="db b pv3"
-              href="https://www.instagram.com/theloversmag/"
-              target="_blank"
-            >
-              Instagram
-            </a>
-            <a
-              className="db b pv3"
-              href="https://twitter.com/theloversmag"
-              target="_blank"
-            >
-              Twitter
-            </a>
+            {navLinks.map(({ linkText, linkUrl, external }, key) => (
+              <a
+                key={key}
+                className="db b pv3"
+                href={linkUrl}
+                target={external ? "_blank" : ""}
+              >
+                {linkText}
+              </a>
+            ))}
           </nav>
         </div>
 
@@ -99,29 +108,16 @@ export default function Header({ isMenuOpened, toggleMenu }) {
           </button>
 
           <nav className="big-nav dn db-l">
-            <a className="ml4 b" href="https://interfacelovers.com/interviews">
-              Interviews
-            </a>
-            <a className="ml4 b" href="https://interfacelovers.com/mixes">
-              Mixes
-            </a>
-            <a className="ml4 b" href="https://interfacelovers.com/about">
-              About
-            </a>
-            <a
-              className="ml4 b"
-              href="https://www.instagram.com/theloversmag/"
-              target="_blank"
-            >
-              Instagram
-            </a>
-            <a
-              className="ml4 b"
-              href="https://twitter.com/theloversmag"
-              target="_blank"
-            >
-              Twitter
-            </a>
+            {navLinks.map(({ linkText, linkUrl, external }, key) => (
+              <a
+                key={key}
+                className="ml4 b"
+                href={linkUrl}
+                target={external ? "_blank" : ""}
+              >
+                {linkText}
+              </a>
+            ))}
           </nav>
         </div>
       </header>
