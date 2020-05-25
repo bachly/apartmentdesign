@@ -12,6 +12,7 @@ module.exports = {
   exportPathMap: async function () {
     const paths = {
       "/": { page: "/" },
+      "/about": { page: "/about" },
     };
 
     // get all .md files in the posts dir
